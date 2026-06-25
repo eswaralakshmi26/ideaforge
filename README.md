@@ -62,8 +62,10 @@ flowchart TD
     class SecCheck,SecEvent security;
     class OrchAgent orchestrator;
     class CriticAgent,StratAgent,MarketingAgent agent;
-    class FastMCP Server mcp;
+    class FastMCP mcp;
 ```
+
+![Architecture Diagram](assets/architecture_diagram.png)
 
 ---
 
