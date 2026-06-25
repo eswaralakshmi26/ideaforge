@@ -220,7 +220,7 @@ Here are the 3 most common issues you might run into and how to resolve them:
    git add .
    git commit -m "Initial commit: ideaforge ADK agent"
    git branch -M main
-   git remote add origin https://github.com/<your-username>/ideaforge.git
+   git remote add origin https://github.com/eswaralakshmi26/ideaforge.git
    git push -u origin main
    ```
 
