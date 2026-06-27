@@ -8,65 +8,8 @@ By combining specialized sub-agents (Critic, Strategist, Marketing) with custom 
 
 ## 🏗️ Architecture Diagram
 
-```mermaid
-flowchart TD
-    START([Start]) --> SecCheck{Security Checkpoint}
-    
-    %% Security Paths
-    SecCheck -- "block (flagged)" --> SecEvent[Security Event Node]
-    SecCheck -- "pass (clean)" --> OrchAgent[Orchestrator Agent]
-    
-    %% Security Event Terminal Node
-    SecEvent --> EndBlock([Blocked / Terminated])
-    
-    %% Orchestration & Sub-Agents
-    OrchAgent -- "Delegates to" --> CriticAgent[Critic Agent]
-    OrchAgent -- "Delegates to" --> StratAgent[Strategist Agent]
-    OrchAgent -- "Delegates to" --> MarketingAgent[Marketing Agent]
-    
-    %% MCP Server integration
-    subgraph FastMCP Server
-        MCP_Trends[get_market_trends]
-        MCP_Comp[get_competitor_analysis]
-        MCP_BE[calculate_break_even]
-        MCP_Brand[generate_brand_assets]
-    end
-    
-    CriticAgent -.-> |Uses| MCP_Comp
-    CriticAgent -.-> |Uses| MCP_BE
-    StratAgent -.-> |Uses| MCP_Trends
-    StratAgent -.-> |Uses| MCP_BE
-    MarketingAgent -.-> |Uses| MCP_Trends
-    MarketingAgent -.-> |Uses| MCP_Brand
-    
-    %% Sub-agent returns to Orchestrator
-    CriticAgent --> |SWOT & Risks Report| OrchAgent
-    StratAgent --> |Growth & Monetization| OrchAgent
-    MarketingAgent --> |Branding & Go-To-Market| OrchAgent
-    
-    %% Human-in-the-Loop Refinement
-    OrchAgent --> HumanReview{Human Review Pause\nRequestInput}
-    HumanReview --> PostProc[Post-Review Processor]
-    
-    PostProc -- "refine: [feedback]" --> OrchAgent
-    PostProc -- "approve" --> FinalOut[Final Output Node]
-    
-    FinalOut --> EndSuccess([Approved Business Plan!])
 
-    %% Styling
-    classDef security fill:#f96,stroke:#333,stroke-width:2px;
-    classDef orchestrator fill:#9f9,stroke:#333,stroke-width:2px;
-    classDef agent fill:#bbf,stroke:#333,stroke-width:1px;
-    classDef mcp fill:#eee,stroke:#333,stroke-width:1px,stroke-dasharray: 5 5;
-    
-    class SecCheck,SecEvent security;
-    class OrchAgent orchestrator;
-    class CriticAgent,StratAgent,MarketingAgent agent;
-    class FastMCP mcp;
-```
-
-![Architecture Diagram](assets/architecture_diagram.png)
-
+![Workflow](assets/workflow.png)
 ---
 
 ## 📋 Prerequisites
